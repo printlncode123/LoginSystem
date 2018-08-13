@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="zl.example.login.dao.UserDAO">
+	<resultMap type="zl.example.login.pojo.User"
+		id="userResultMap">
+		<!-- 用id属性来映射主键字段 -->
+		<id property="id" column="id" />
+		<!-- 用result属性来映射非主键字段 -->
+		<result property="username" column="uname" />
+		<result property="password" column="password" />
+	</resultMap>
+	
+	<select id="loginByNameAndPass" parameterType="java.lang.String" resultMap="userResultMap">
+		select uname,password from user where uname=#{0} and password=#{1}
+	</select>
+</mapper>
